@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>code editor</title>
+    <style>
+        /*css*/
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        /*navigation*/
+        nav {
+            margin-top: 20px;
+            top: 10px;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            position: sticky;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            float: right;
+            margin: 20px;
+        }
+
+        ul li {
+            display: inline-block;
+        }
+
+        ul li a {
+            text-decoration: none;
+            font-size: 20px;
+            padding: 20px;
+            color: black;
+            border: 1px solid transparent;
+            border-radius: 20px;
+        }
+
+        ul li a:hover {
+            transition: 0.3s ease;
+            color: orangered;
+        }
+
+        .logo img {
+            float: left;
+            border-radius: 20px;
+            padding: 10px;
+            width: 15%;
+            height: 20%;
+        }
+
+        .logo img:hover {
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 5px 5px 5px orangered;
+        }
+
+        /*codeditor*/
+        body {
+            background: #ffd68a;
+            color: black;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+        }
+
+        .left,
+        .right {
+            flex-basis: 50%;
+            padding: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 28%;
+            background: #1f1f1f;
+            color: #fff;
+            padding: 10px 20px;
+            border: 0;
+            outline: 0;
+            font-size: 18px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 95%;
+            background: #fff;
+            border: 0;
+            outline: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="codeditor.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="main">
+                <div class="logo"> <img src="codecrush-logo.png">
+                </div>
+                <div class="items">
+                    <ul>
+                        <li class="active"><a href="#home">home</a></li>
+                        <li><a href="#">e-learning</a></li>
+                        <li><a href="#">video tutorials</a></li>
+                        <li><a href="#">code-editor</a></li>
+                        <li><a href="#">exercises</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="left">
+            <label>html</label>
+            <textarea id="html-code"></textarea>
+            <label>css</label>
+            <textarea id="css-code"></textarea>
+            <label>javascript</label>
+            <textarea id="js-code"></textarea>
+        </div>
+        <div class="right">
+            <label>output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const html = document.getelementbyid('html-code');
+        const css = document.getelementbyid('css-code');
+        const js = document.getelementbyid('js-code');
+        const output = document.getelementbyid('output').contentwindow.document;
+        const script = document.createelement('script');
+        document.body.addeventlistener('keyup', () => {
+            output.open();
+            output.write(html.value + "<style>" + css.value + "</style>" + "<script>" +js.value+ "</script"+">");
+             output.close(); 
+                    })
+    </script>
+    </body>
+    </html>
